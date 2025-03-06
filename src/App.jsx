@@ -6,18 +6,21 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setbestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
+
   useEffect(() => {
     (async () => {
-      let url = `https://api.giphy.com/v2/emoji?api_key=dVo1EiasKCxMUgm4zteNzvY1H4POR9GO&limit=25&offset=0`;
+      let url = `https://api.giphy.com/v2/emoji?api_key=FUe0U1CXi8P3HHqECsUuHKOHFSFIqZS0&limit=25&offset=0`;
       let response = await fetch(url);
       let res = await response.json();
       setData(res.data);
     })();
   }, []);
+
   const shuffleCards = () => {
     const shuffledData = [...data].sort(() => Math.random() - 0.5);
     setData(shuffledData);
   };
+
   const handleCardClick = (id) => {
     if (clickedCards.includes(id)) {
       setScore(0);
@@ -32,6 +35,7 @@ function App() {
     }
     shuffleCards();
   };
+
   return (
     <>
       <header>
